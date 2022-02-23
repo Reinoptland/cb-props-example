@@ -8,6 +8,9 @@ function App() {
     <div className="App">
       <header className="App-header">
         <Player />
+        <Player />
+        <Player />
+        <Player />
       </header>
     </div>
   );

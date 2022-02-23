@@ -1,7 +1,7 @@
 import { useState } from "react";
 
 export default function Player() {
-  const [player, setPlayer] = useState({ name: "Rein", score: 0 });
+  const [player, setPlayer] = useState({ name: "", score: 0 });
   const [editMode, setEditMode] = useState(true);
 
   function changeScore(number) {
