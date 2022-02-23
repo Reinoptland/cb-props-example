@@ -5,11 +5,15 @@ export default function Player(props) {
   const [editMode, setEditMode] = useState(true);
 
   function changeScore(number) {
-    setPlayer({ ...player, score: player.score + number });
+    // setPlayer({ ...player, score: player.score + number });
+    props.score = props.score + number;
+    console.log(props.score);
   }
 
   function changeName(input) {
-    setPlayer({ ...player, name: input });
+    // setPlayer({ ...player, name: input });
+    props.name = input;
+    console.log(props.name);
   }
 
   return (
