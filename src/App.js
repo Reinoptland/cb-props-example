@@ -11,6 +11,18 @@ function App() {
     { id: 4, name: "Leroy", score: 3 },
   ]);
 
+  function changeScore(playerId, number) {
+    console.log("ID:", playerId, "NUMBER", number);
+    // UPDATE THE SCORE OF THAT PLAYER HERE ..
+    // setPlayers()
+  }
+
+  function changeName(playerId, input) {
+    console.log("ID:", playerId, "NAME", input);
+    // UPDATE THE NAME OF THAT PLAYER HERE ..
+    // setPlayers()
+  }
+
   // console.log(players);
   const sortedPlayers = players.sort((playerA, playerB) => {
     return playerB.score - playerA.score;
@@ -22,7 +34,14 @@ function App() {
       <header className="App-header">
         {sortedPlayers.map((player) => {
           return (
-            <Player key={player.id} name={player.name} score={player.score} />
+            <Player
+              key={player.id}
+              id={player.id}
+              name={player.name}
+              score={player.score}
+              changeName={changeName}
+              changeScore={changeScore}
+            />
           );
         })}
       </header>
