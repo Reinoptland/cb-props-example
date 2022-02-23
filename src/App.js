@@ -12,24 +12,25 @@ function App() {
   ]);
 
   function changeScore(playerId, number) {
-    console.log("ID:", playerId, "NUMBER", number);
-    // UPDATE THE SCORE OF THAT PLAYER HERE ..
     const updatedPlayers = players.map((player) => {
       if (player.id === playerId) {
-        console.log("UPDATE THIS PLAYER", player);
         return { ...player, score: player.score + number };
       } else {
         return player;
       }
     });
-    console.log(updatedPlayers);
     setPlayers(updatedPlayers);
   }
 
   function changeName(playerId, input) {
-    console.log("ID:", playerId, "NAME", input);
-    // UPDATE THE NAME OF THAT PLAYER HERE ..
-    // setPlayers()
+    const updatedPlayers = players.map((player) => {
+      if (player.id === playerId) {
+        return { ...player, name: input };
+      } else {
+        return player;
+      }
+    });
+    setPlayers(updatedPlayers);
   }
 
   // console.log(players);
