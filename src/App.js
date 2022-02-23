@@ -33,12 +33,10 @@ function App() {
     setPlayers(updatedPlayers);
   }
 
-  // console.log(players);
   const sortedPlayers = players.sort((playerA, playerB) => {
     return playerB.score - playerA.score;
   });
 
-  // console.log(sortedPlayers);
   return (
     <div className="App">
       <header className="App-header">

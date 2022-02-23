@@ -1,7 +1,6 @@
 import { useState } from "react";
 
 export default function Player(props) {
-  const [player, setPlayer] = useState({ name: "", score: 0 });
   const [editMode, setEditMode] = useState(true);
 
   return (
