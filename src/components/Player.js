@@ -1,6 +1,6 @@
 import { useState } from "react";
 
-export default function Player() {
+export default function Player(props) {
   const [player, setPlayer] = useState({ name: "", score: 0 });
   const [editMode, setEditMode] = useState(true);
 
@@ -14,8 +14,8 @@ export default function Player() {
 
   return (
     <div>
-      <h2>{player.name}</h2>
-      <h3>{player.score}</h3>
+      <h2>{props.name}</h2>
+      <h3>{props.score}</h3>
       <div>
         <button onClick={() => changeScore(-1)}>-</button>
         <button onClick={() => changeScore(1)}>+</button>
