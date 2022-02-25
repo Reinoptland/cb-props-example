@@ -1,20 +1,22 @@
-import { useState } from "react";
+import { useContext, useState } from "react";
+import { GameContext } from "../App";
 
 export default function Player(props) {
   const [editMode, setEditMode] = useState(true);
+  const { changeName, changeScore } = useContext(GameContext);
 
   return (
     <div>
       <h2>{props.name}</h2>
       <h3>{props.score}</h3>
       <div>
-        <button onClick={() => props.changeScore(props.id, -1)}>-</button>
-        <button onClick={() => props.changeScore(props.id, 1)}>+</button>
+        <button onClick={() => changeScore(props.id, -1)}>-</button>
+        <button onClick={() => changeScore(props.id, 1)}>+</button>
       </div>
       {editMode && (
         <input
           value={props.name}
-          onChange={(e) => props.changeName(props.id, e.target.value)}
+          onChange={(e) => changeName(props.id, e.target.value)}
         />
       )}
       {editMode ? (

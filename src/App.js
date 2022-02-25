@@ -41,7 +41,13 @@ function App() {
   });
 
   return (
-    <GameContext.Provider value={{ players: players }}>
+    <GameContext.Provider
+      value={{
+        players: players,
+        changeScore: changeScore,
+        changeName: changeName,
+      }}
+    >
       <div className="App">
         <PlayerCounter />
         <header className="App-header">
@@ -52,8 +58,6 @@ function App() {
                 id={player.id}
                 name={player.name}
                 score={player.score}
-                changeName={changeName}
-                changeScore={changeScore}
               />
             );
           })}
