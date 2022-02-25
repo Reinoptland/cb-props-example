@@ -4,7 +4,7 @@ import Player from "./components/Player";
 import { useState, createContext } from "react";
 import PlayerCounter from "./components/PlayerCounter";
 
-const GameContext = createContext();
+export const GameContext = createContext();
 
 function App() {
   const [players, setPlayers] = useState([
@@ -43,7 +43,7 @@ function App() {
   return (
     <GameContext.Provider value={{ players: players }}>
       <div className="App">
-        <PlayerCounter players={players} />
+        <PlayerCounter />
         <header className="App-header">
           {sortedPlayers.map((player) => {
             return (
