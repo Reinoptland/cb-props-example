@@ -3,6 +3,7 @@ import "./App.css";
 import Player from "./components/Player";
 import { useState, createContext } from "react";
 import PlayerCounter from "./components/PlayerCounter";
+import ResetGame from "./components/ResetGame";
 
 export const GameContext = createContext();
 
@@ -36,6 +37,11 @@ function App() {
     setPlayers(updatedPlayers);
   }
 
+  function resetGame() {
+    const updatedPlayers = players.map((player) => ({ ...player, score: 0 }));
+    setPlayers(updatedPlayers);
+  }
+
   const sortedPlayers = players.sort((playerA, playerB) => {
     return playerB.score - playerA.score;
   });
@@ -46,6 +52,7 @@ function App() {
         players: players,
         changeScore: changeScore,
         changeName: changeName,
+        resetGame: resetGame,
       }}
     >
       <div className="App">
@@ -62,6 +69,7 @@ function App() {
             );
           })}
         </header>
+        <ResetGame />
       </div>
     </GameContext.Provider>
   );

@@ -1,5 +1,7 @@
 import { useContext, useState } from "react";
 import { GameContext } from "../App";
+import ResetGame from "./ResetGame";
+import ScoreButton from "./ScoreButton";
 
 export default function Player(props) {
   const [editMode, setEditMode] = useState(true);
@@ -10,8 +12,16 @@ export default function Player(props) {
       <h2>{props.name}</h2>
       <h3>{props.score}</h3>
       <div>
-        <button onClick={() => changeScore(props.id, -1)}>-</button>
-        <button onClick={() => changeScore(props.id, 1)}>+</button>
+        <ScoreButton number={-1} playerId={props.id}>
+          -
+        </ScoreButton>
+        <ScoreButton number={1} playerId={props.id}>
+          +
+        </ScoreButton>
+        <ScoreButton number={5} playerId={props.id}>
+          + 5
+        </ScoreButton>
+        <ResetGame />
       </div>
       {editMode && (
         <input
