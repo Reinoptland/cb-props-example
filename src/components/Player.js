@@ -1,11 +1,11 @@
 import { useContext, useState } from "react";
-import { GameContext } from "../App";
+import { gameContext } from "../contexts/GameContext";
 import ResetGame from "./ResetGame";
 import ScoreButton from "./ScoreButton";
 
 export default function Player(props) {
   const [editMode, setEditMode] = useState(true);
-  const { changeName, changeScore } = useContext(GameContext);
+  const { changeName } = useContext(gameContext);
 
   return (
     <div>

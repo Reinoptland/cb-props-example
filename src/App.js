@@ -1,77 +1,34 @@
 import logo from "./logo.svg";
 import "./App.css";
 import Player from "./components/Player";
-import { useState, createContext } from "react";
 import PlayerCounter from "./components/PlayerCounter";
 import ResetGame from "./components/ResetGame";
-
-export const GameContext = createContext();
+import { useContext } from "react";
+import { gameContext } from "./contexts/GameContext";
 
 function App() {
-  const [players, setPlayers] = useState([
-    { id: 1, name: "Harm", score: 2 },
-    { id: 2, name: "Mauro", score: 5 },
-    { id: 3, name: "Rein", score: 1 },
-    { id: 4, name: "Leroy", score: 3 },
-  ]);
-
-  function changeScore(playerId, number) {
-    const updatedPlayers = players.map((player) => {
-      if (player.id === playerId) {
-        return { ...player, score: player.score + number };
-      } else {
-        return player;
-      }
-    });
-    setPlayers(updatedPlayers);
-  }
-
-  function changeName(playerId, input) {
-    const updatedPlayers = players.map((player) => {
-      if (player.id === playerId) {
-        return { ...player, name: input };
-      } else {
-        return player;
-      }
-    });
-    setPlayers(updatedPlayers);
-  }
-
-  function resetGame() {
-    const updatedPlayers = players.map((player) => ({ ...player, score: 0 }));
-    setPlayers(updatedPlayers);
-  }
-
+  const { players } = useContext(gameContext);
   const sortedPlayers = players.sort((playerA, playerB) => {
     return playerB.score - playerA.score;
   });
 
   return (
-    <GameContext.Provider
-      value={{
-        players: players,
-        changeScore: changeScore,
-        changeName: changeName,
-        resetGame: resetGame,
-      }}
-    >
-      <div className="App">
-        <PlayerCounter />
-        <header className="App-header">
-          {sortedPlayers.map((player) => {
-            return (
-              <Player
-                key={player.id}
-                id={player.id}
-                name={player.name}
-                score={player.score}
-              />
-            );
-          })}
-        </header>
-        <ResetGame />
-      </div>
-    </GameContext.Provider>
+    <div className="App">
+      <PlayerCounter />
+      <header className="App-header">
+        {sortedPlayers.map((player) => {
+          return (
+            <Player
+              key={player.id}
+              id={player.id}
+              name={player.name}
+              score={player.score}
+            />
+          );
+        })}
+      </header>
+      <ResetGame />
+    </div>
   );
 }
 

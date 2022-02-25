@@ -1,8 +1,8 @@
 import React, { useContext } from "react";
-import { GameContext } from "../App";
+import { gameContext } from "../contexts/GameContext";
 
 export default function ScoreButton(props) {
-  const { changeScore } = useContext(GameContext);
+  const { changeScore } = useContext(gameContext);
 
   return (
     <button onClick={() => changeScore(props.playerId, props.number)}>

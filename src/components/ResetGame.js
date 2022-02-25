@@ -1,7 +1,7 @@
 import React, { useContext } from "react";
-import { GameContext } from "../App";
+import { gameContext } from "../contexts/GameContext";
 
 export default function ResetGame() {
-  const { resetGame } = useContext(GameContext);
+  const { resetGame } = useContext(gameContext);
   return <button onClick={resetGame}>ResetGame</button>;
 }
