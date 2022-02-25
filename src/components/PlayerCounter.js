@@ -1,7 +1,6 @@
-import { useContext } from "react";
-import { gameContext } from "../contexts/GameContext";
+import { useGame } from "../contexts/GameContext";
 
 export default function PlayerCounter(props) {
-  const gameState = useContext(gameContext);
+  const gameState = useGame();
   return <div>NO. of players: {gameState.players.length}</div>;
 }

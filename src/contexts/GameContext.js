@@ -1,4 +1,4 @@
-import { useState, createContext } from "react";
+import { useState, createContext, useContext } from "react";
 
 export const gameContext = createContext();
 
@@ -49,4 +49,8 @@ export default function GameContext(props) {
       {props.children}
     </gameContext.Provider>
   );
+}
+
+export function useGame() {
+  return useContext(gameContext);
 }

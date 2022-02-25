@@ -3,11 +3,10 @@ import "./App.css";
 import Player from "./components/Player";
 import PlayerCounter from "./components/PlayerCounter";
 import ResetGame from "./components/ResetGame";
-import { useContext } from "react";
-import { gameContext } from "./contexts/GameContext";
+import { useGame } from "./contexts/GameContext";
 
 function App() {
-  const { players } = useContext(gameContext);
+  const { players } = useGame();
   const sortedPlayers = players.sort((playerA, playerB) => {
     return playerB.score - playerA.score;
   });
