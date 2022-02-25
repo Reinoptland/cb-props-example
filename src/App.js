@@ -1,7 +1,10 @@
 import logo from "./logo.svg";
 import "./App.css";
 import Player from "./components/Player";
-import { useState } from "react";
+import { useState, createContext } from "react";
+import PlayerCounter from "./components/PlayerCounter";
+
+const GameContext = createContext();
 
 function App() {
   const [players, setPlayers] = useState([
@@ -38,22 +41,25 @@ function App() {
   });
 
   return (
-    <div className="App">
-      <header className="App-header">
-        {sortedPlayers.map((player) => {
-          return (
-            <Player
-              key={player.id}
-              id={player.id}
-              name={player.name}
-              score={player.score}
-              changeName={changeName}
-              changeScore={changeScore}
-            />
-          );
-        })}
-      </header>
-    </div>
+    <GameContext.Provider value={{ players: players }}>
+      <div className="App">
+        <PlayerCounter players={players} />
+        <header className="App-header">
+          {sortedPlayers.map((player) => {
+            return (
+              <Player
+                key={player.id}
+                id={player.id}
+                name={player.name}
+                score={player.score}
+                changeName={changeName}
+                changeScore={changeScore}
+              />
+            );
+          })}
+        </header>
+      </div>
+    </GameContext.Provider>
   );
 }
 
